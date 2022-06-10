@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+
+.card-size{
+  width: 350px !important;
+  min-height: 200px;
+  max-height: 250px;
+  padding: 10px !important;
+  border-radius: 20px !important;
+  font-family: "Open Sans", sans-serif !important;
+  transition:  transform 2s;
+  text-align: left;
+}
+
+.card-size:hover{
+  color: #f2f2f2;
+  box-shadow: 20px 50px 100px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  background: #e2a9e5;
+background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
+background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+transform: rotate(-1deg);
+}
+
+
+.my-label{
+  opacity: 0.6;
+  width: 100px;
+  text-align: center;
+  padding: 8px 0px !important;
+  border-radius: 10px !important;
+}
+
+.my-label:hover{
+  cursor: pointer;
+  opacity: 1.5;
+}
+
+.my-header{
+  font-weight: 700;
+  font-size: 11pt;
+  margin: 15px 0;
+}
+
+.my-desc{
+  color: #464444;
+  margin-bottom: 25px !important;
+}
+
+.my-desc > p {
+  font-size: 10pt !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: auto !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.date{
+  font-size: 11pt;
+}

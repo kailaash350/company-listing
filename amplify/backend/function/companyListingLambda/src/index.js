@@ -9,7 +9,7 @@ const AWS = require('aws-sdk')
 exports.handler = async (event) => {
     try {
         var params = {
-            TableName: 'aus-companies'
+            TableName: 'aus_companies'
         };
         var result = await dynamodbCLI.scan(params).promise()
         console.log(JSON.stringify(result))
