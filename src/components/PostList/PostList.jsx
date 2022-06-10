@@ -61,22 +61,28 @@ const PostList = () => {
 
   let loading = false; 
   let data = dummy_data;
+  const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
+      
 
   const n = 4;
   const [allPosts, setAllPosts] = useState([]);
-  const [end, setEnd] = useState(10);
+  const [end, setEnd] = useState(4);
   const [posts, setPosts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+  const [value, setValue] = useState("");
 
   useEffect(()=>{
     if (!loading){
-      const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
       setAllPosts(all_data)
-      increaseFilteredEnd()
-      setPosts(all_data.slice(0, end))
     }
 
   }, [loading])
+
+  
+  useEffect(()=>{
+      increaseFilteredEnd()
+      setPosts(allPosts.slice(0, end))
+  }, [allPosts])
   
   const loadMorePosts = () => {
     setTimeout(() => {
@@ -100,6 +106,19 @@ const PostList = () => {
     </button>
   )
 
+  const searchNews = ()=>{
+    const filtered_posts = all_data.filter((el)=>{
+      console.log(value);
+      return el.description.toLowerCase().includes(value.toLowerCase()) ||
+              el.title.toLowerCase().includes(value.toLowerCase())
+    })
+    console.log(filtered_posts);
+    setAllPosts(filtered_posts)
+  }
+
+  const inputValueOnChange = (event)=>{
+    setValue(event.target.value);
+  }
 
   
   if(loading) return (<h1>Loading...</h1>)
@@ -108,8 +127,8 @@ const PostList = () => {
     <div>
        <div className={`ui search ${styles['search-bar']}`}>
         <div className="ui icon input">
-          <input className="prompt" type="text" placeholder="Search..."/>
-          <i className="search icon"></i>
+          <input value={value} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
+          <i className="search link icon" onClick={searchNews}></i>
         </div>
       </div>
        <InfiniteScroll
