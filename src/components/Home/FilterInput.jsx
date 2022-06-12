@@ -11,8 +11,9 @@ export const FilterInput = ({filter, setFilter}) => {
   return (
    
       <span>
+
         <input className='table-search'
-        placeholder='search table'
+        placeholder='Local Search'
           value={value || ''}
           onChange={e => {
             setValue(e.target.value);

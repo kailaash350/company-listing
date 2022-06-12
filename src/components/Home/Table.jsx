@@ -4,9 +4,9 @@ import { useSortBy } from 'react-table/dist/react-table.development';
 import { Checkbox } from './Checkbox.jsx';
 import { FilterInput } from './FilterInput';
 
-const Table = (props) => {
-    const columns = useMemo(() => props.columns, [])
-    const data = useMemo(() => props.data, [])
+export default function Table(props){
+    const columns = props.columns
+    const data =  props.data
 
     const {
         getTableProps,
@@ -53,7 +53,9 @@ const Table = (props) => {
 
     return (
         <>
-            <FilterInput filter={globalFilter} setFilter={setGlobalFilter} />
+            
+            <FilterInput  filter={globalFilter} setFilter={setGlobalFilter} />
+            
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
@@ -85,7 +87,8 @@ const Table = (props) => {
                     })}
                 </tbody>
             </table>
-            
+            <div className="page-section">
+                
             <span>
                 Page{' '}
                 <strong>
@@ -104,8 +107,10 @@ const Table = (props) => {
 
             <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
             <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
-
-            {/* for RSS API <code>
+            </div>
+<div className='page-section'>
+<h3>For network call to fetch feed data</h3>
+              <code>
                 {JSON.stringify(
                     {
                         selectedFlatRows:selectedFlatRows.map(row=>row.original)
@@ -113,9 +118,9 @@ const Table = (props) => {
                     null,
                 )
                 }
-            </code> */}
+            </code> 
+</div>
         </>
     )
 }
 
-export default Table;

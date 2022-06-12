@@ -8,15 +8,12 @@ Amplify.configure(awsExports);
 const myAPI = "companyListingAPI";
 const path = "/company";
 
-function Home() {
+export default function Home() {
     const [company, setCompany] = useState([]);
 
-   
-    function handleGetData(e) {
-        e.preventDefault();
+    function handleGetData() {
         API.get(myAPI, path)
         .then((response) => {
-            console.log(response.Items);
             setCompany(response.Items);
         })
         .catch((error) => {
@@ -30,7 +27,7 @@ function Home() {
             <div className='form-container'>
                 <h1>Company Listing</h1>
                 <div className='form'>
-                    <form className='search-form'>
+                    <div className='search-form'>
                         <input
                             type='text'
                             placeholder='search by company name'
@@ -46,11 +43,13 @@ function Home() {
                             <option value='Insuranace'>Insuranace</option>
                         </select>
                         <button onClick={handleGetData}>Get Data</button>
-                    </form>
+                    </div>
                 </div>
             </div>
             <section className="page-section">
+            {
 
+            }
             <Table data={company} columns={COLUMNS}/>
             </section>
             
@@ -81,4 +80,3 @@ const COLUMNS = [{
     accessor:'ASX'
 }
 ]
-export default Home;
