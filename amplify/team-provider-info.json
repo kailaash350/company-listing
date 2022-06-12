@@ -15,7 +15,7 @@
       "function": {
         "companyListingLambda": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/companyListingLambda-477541386c467442636d-build.zip"
+          "s3Key": "amplify-builds/companyListingLambda-3875775257515a335936-build.zip"
         }
       }
     }

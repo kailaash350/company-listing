@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import {  BrowserRouter as Router, Link, useNavigate  } from "react-router-dom";
+import {   Link  } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import styles from "./header.module.css";
 
@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 export const Header = ({ name, navs }) => {
   const classes = useStyles();
   
-  const history = useNavigate();
 
   return (
     <header>
@@ -63,7 +62,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  name: "Your Name",
+  name: "TCS Internal",
   navs: [
     { desc: "Home", to: "/home" },
     { desc: "Feed", to: "/feeds" },

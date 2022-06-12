@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Amplify, { API } from "aws-amplify";
-// import awsExports from "../../aws-exports";
+import awsExports from "../../aws-exports";
 import Table from "./Table";
-// Amplify.configure(awsExports);
+Amplify.configure(awsExports);
 
 const myAPI = "companyListingAPI";
 const path = "/company";
@@ -13,14 +14,14 @@ export default function Home() {
 
     function handleGetData() {
         API.get(myAPI, path)
-        .then((response) => {
-            setCompany(response.Items);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((response) => {
+                setCompany(response.Items);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
-   
+
 
     return (
         <div className='App'>
@@ -30,9 +31,10 @@ export default function Home() {
                     <div className='search-form'>
                         <input
                             type='text'
-                            placeholder='search by company name'
+                            placeholder='Search by Company Name'
                         />
                         <select type='Sector' placeholder='sector'>
+                        <option value=''>Select</option>
                             <option value='Software'>Software</option>
                             <option value='Consumer Finance'>
                                 Consumer Finance
@@ -47,36 +49,44 @@ export default function Home() {
                 </div>
             </div>
             <section className="page-section">
-            {
-
-            }
-            <Table data={company} columns={COLUMNS}/>
+                {company.length === 0 ?
+                    '' :
+                    <Table data={company} columns={COLUMNS} />
+                }
             </section>
-            
+            {company.length === 0 ?
+                '' :
+                <section className="page-section">
+                    <Link to='/feeds'>
+                        <button>Detailed News Feed</button>
+                    </Link>
+                </section>
+            }
+
         </div>
     );
-} 
+}
 
 const COLUMNS = [{
-    Header:'Company Name',
-    accessor:'company_name'
-},{
-    Header:'Sector',
-    accessor:'sector'
-},{
-    Header:'Industry',
-    accessor:'industry'
-},{
-    Header:'Head Quaters',
-    accessor:'head_quaters'
-},{
-    Header:'Founded',
-    accessor:'founded'
-},{
-    Header:'Details',
-    accessor:'details'
-},{
-    Header:'ASX',
-    accessor:'ASX'
+    Header: 'Company Name',
+    accessor: 'company_name'
+}, {
+    Header: 'Sector',
+    accessor: 'sector'
+}, {
+    Header: 'Industry',
+    accessor: 'industry'
+}, {
+    Header: 'Head Quaters',
+    accessor: 'head_quaters'
+}, {
+    Header: 'Founded',
+    accessor: 'founded'
+}, {
+    Header: 'Details',
+    accessor: 'details'
+}, {
+    Header: 'ASX',
+    accessor: 'ASX'
 }
 ]
