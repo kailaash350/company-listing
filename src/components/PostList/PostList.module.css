@@ -1,0 +1,30 @@
+
+.scroll{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+.cards{
+  display: flex;
+  width: 1200px;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+.cards > * {
+  margin: 10px 10px !important;
+}
+
+.load-more{
+  /* position: absolute;
+  margin: auto;
+  left:0.5; */
+}
+
+.search-bar{
+  padding: 10px 0 0 0;
+}
