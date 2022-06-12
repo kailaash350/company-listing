@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./Home.css";
 import Amplify, { API } from "aws-amplify";
-import awsExports from "../../aws-exports";
+// import awsExports from "../../aws-exports";
 import Table from "./Table";
-Amplify.configure(awsExports);
+// Amplify.configure(awsExports);
 
 const myAPI = "companyListingAPI";
 const path = "/company";
