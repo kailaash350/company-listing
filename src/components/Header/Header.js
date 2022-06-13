@@ -62,7 +62,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  name: "TCS Internal",
+  name: "Project Name",
   navs: [
     { desc: "Home", to: "/home" },
     { desc: "Feed", to: "/feeds" },

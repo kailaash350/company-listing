@@ -16,6 +16,10 @@
         "companyListingLambda": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
           "s3Key": "amplify-builds/companyListingLambda-3875775257515a335936-build.zip"
+        },
+        "searchCompany": {
+          "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
+          "s3Key": "amplify-builds/searchCompany-6a516c4f716c75676d4f-build.zip"
         }
       }
     }

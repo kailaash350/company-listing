@@ -88,5 +88,11 @@ const COLUMNS = [{
 }, {
     Header: 'ASX',
     accessor: 'ASX'
+}, {
+    Header: 'Revenue(mil)',
+    accessor: 'revenue(mil)'
+}, {
+    Header: 'Budget(mil)',
+    accessor: 'budget(mil)'
 }
 ]
