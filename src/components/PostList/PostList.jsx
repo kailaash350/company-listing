@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from '../Card';
 import styles from './PostList.module.css';
-
+import Amplify, { API } from "aws-amplify";
+import awsExports from "../../aws-exports";
+Amplify.configure(awsExports);
 
 // const GET_NEWS = gql`
 //   query MyQuery {
@@ -55,13 +57,17 @@ const dummy_data =   {
       }
   }
 
-const PostList = (props) => {
-  // TODO: Uncomment this to use API call dynamic data, need update api-key in index.js
-  // const { loading, error, data } = useQuery(GET_NEWS);
-  let loading = false; 
-  let data = dummy_data;
-  const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
-      
+const PostList = ({ }) => {
+  const myAPI = "companyListingAPI";
+  const path = "/get-all-rss-feed";
+
+
+  const [allData, setAllData] = useState([]);
+  
+  // const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
+
+
+  let loading = false;
 
   const n = 4;
   const [allPosts, setAllPosts] = useState([]);
@@ -70,12 +76,29 @@ const PostList = (props) => {
   const [hasMore, setHasMore] = useState(true);
   const [value, setValue] = useState("");
 
+  useEffect(() => {
+    handleGetRSSData()
+   },[]);
+   
+   
+  function handleGetRSSData() {
+      API.get(myAPI, path)
+          .then((response) => {
+            // console.log(response);
+              setAllData(response.Items);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  }
+
   useEffect(()=>{
-    if (!loading){
-      setAllPosts(all_data)
+    if (allData.length > 0){
+      setAllPosts(allData)
+      console.log(allData);
     }
 
-  }, [loading])
+  }, [allData])
 
   
   useEffect(()=>{
@@ -106,7 +129,8 @@ const PostList = (props) => {
   )
 
   const searchNews = ()=>{
-    const filtered_posts = all_data.filter((el)=>{
+    // TODO:
+    const filtered_posts = allData.filter((el)=>{
       console.log(value);
       return el.description.toLowerCase().includes(value.toLowerCase()) ||
               el.title.toLowerCase().includes(value.toLowerCase())

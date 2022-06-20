@@ -6,10 +6,10 @@ const Card = ({ data }) => {
     return (
         <div className={`ui card blue ${styles['card-size']}`}>
             <div className='content'>
-                <div className={styles["my-header"]}>{data.title}</div>
+                <div className={styles["my-header"]}>{data.name}</div>
 
                 <div className={styles["my-desc"]}>
-                    <p>{data.description}</p>
+                    <p>{data.link}</p>
                 </div>
 
                 <div className='header'>
@@ -18,11 +18,11 @@ const Card = ({ data }) => {
             </div>
             <div className='extra content'>
                 <div className='meta' style={{ marginTop: "5px" }}>
-                    <a href={data.link} target='_blank'>
+                    <a href={data.desc} target='_blank'>
                         <i className='tag icon'></i>
                         Link
                     </a>
-                    {/* <span className='time'>{data.link}</span> */}
+                    {/* <span className='time'>{data.desc}</span> */}
                     <span className={`right floated category ${styles.date}`}>
                         {data.pubDate}
                     </span>
