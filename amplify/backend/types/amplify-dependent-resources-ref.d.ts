@@ -12,7 +12,7 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "injestRssFeed": {
+        "getAllRSSFeed": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -21,6 +21,11 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "companyListingAPI": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "searchCompany": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

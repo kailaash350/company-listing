@@ -10,7 +10,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "injestRssFeed": {
+    "getAllRSSFeed": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -25,6 +25,36 @@
         {
           "category": "function",
           "resourceName": "companyListingLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getAllRSSFeed",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "searchCompany",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "searchCompany": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "searchCompany",
           "attributes": [
             "Name",
             "Arn"

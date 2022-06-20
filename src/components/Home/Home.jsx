@@ -8,13 +8,23 @@ Amplify.configure(awsExports);
 
 const myAPI = "companyListingAPI";
 const path = "/company";
-
+const RSS = "companyListingAPI";
+const RSSPath = "/get-all-rss-feed";
 export default function Home() {
     const [company, setCompany] = useState([]);
+    const [searchText, setSearchText] = useState()
+
+
+    function searchData(){
+        console.log(searchText)
+        
+    }
+
 
     function handleGetData() {
         API.get(myAPI, path)
             .then((response) => {
+                console.log(response)
                 setCompany(response.Items);
             })
             .catch((error) => {
@@ -29,7 +39,8 @@ export default function Home() {
                 <h1>Company Listing</h1>
                 <div className='form'>
                     <div className='search-form'>
-                        <input
+                        <input value={searchText}
+                            onChange={(e)=>setSearchText(e.target.value)}
                             type='text'
                             placeholder='Search by Company Name'
                         />

@@ -55,10 +55,9 @@ const dummy_data =   {
       }
   }
 
-const PostList = () => {
+const PostList = (props) => {
   // TODO: Uncomment this to use API call dynamic data, need update api-key in index.js
   // const { loading, error, data } = useQuery(GET_NEWS);
-
   let loading = false; 
   let data = dummy_data;
   const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
