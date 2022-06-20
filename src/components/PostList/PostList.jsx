@@ -141,14 +141,15 @@ const PostList = ({ }) => {
       filtered_posts = allData.filter((el)=>{
         console.log(searchInput);
         return el.link.toLowerCase().includes(searchInput.toLowerCase()) ||
-                el.name.toLowerCase().includes(searchInput.toLowerCase())
+                el.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+                el.articleFullText.toLowerCase().includes(searchInput.toLowerCase())
       })
     }else{
       filtered_posts = allData;
       console.log("all");
       console.log(allData);
     }
-
+    console.log(filtered_posts.length);
     setAllPosts(filtered_posts)
   }
 
