@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Amplify, { API } from "aws-amplify";
-import awsExports from "../../aws-exports";
+// import awsExports from "../../aws-exports";
 import Table from "./Table";
-Amplify.configure(awsExports);
+import { SearchContext } from "../../hooks/Context";
+
+// Amplify.configure(awsExports);
 
 const myAPI = "companyListingAPI";
 const path = "/company";
@@ -20,6 +22,7 @@ export default function Home() {
         
     }
 
+    const { setSearchInput } = useContext(SearchContext);
 
     function handleGetData() {
         API.get(myAPI, path)
@@ -30,6 +33,10 @@ export default function Home() {
             .catch((error) => {
                 console.log(error);
             });
+    }
+
+    const onSearchCompanyFeeds = () => {
+        setSearchInput("cba")
     }
 
 
@@ -65,14 +72,23 @@ export default function Home() {
                     <Table data={company} columns={COLUMNS} />
                 }
             </section>
-            {company.length === 0 ?
+            {/* {company.length === 0 ?
                 '' :
                 <section className="page-section">
                     <Link to='/feeds'>
-                        <button>Detailed News Feed</button>
+                        <button onClick={onSearchComapnyFeeds}>Detailed News Feed</button>
                     </Link>
                 </section>
-            }
+            } */}
+            {/* TODO: TEST purpose */}
+            
+                <section className="page-section">
+                    <Link to='/feeds'>
+                        <button onClick={onSearchCompanyFeeds}>Detailed News Feed</button>
+                    </Link>
+                </section>
+            
+
 
         </div>
     );

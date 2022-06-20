@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from '../Card';
 import styles from './PostList.module.css';
 import Amplify, { API } from "aws-amplify";
 import awsExports from "../../aws-exports";
+import { SearchContext } from "../../hooks/Context";
+
 Amplify.configure(awsExports);
 
 // const GET_NEWS = gql`
@@ -74,7 +76,7 @@ const PostList = ({ }) => {
   const [end, setEnd] = useState(4);
   const [posts, setPosts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-  const [value, setValue] = useState("");
+  const { searchInput, setSearchInput } = useContext(SearchContext);
 
   useEffect(() => {
     handleGetRSSData()
@@ -93,9 +95,13 @@ const PostList = ({ }) => {
   }
 
   useEffect(()=>{
+
     if (allData.length > 0){
-      setAllPosts(allData)
-      console.log(allData);
+      if(searchInput !== ""){
+        searchNews()
+      }else{
+        setAllPosts(allData)
+      }
     }
 
   }, [allData])
@@ -129,18 +135,25 @@ const PostList = ({ }) => {
   )
 
   const searchNews = ()=>{
-    // TODO:
-    const filtered_posts = allData.filter((el)=>{
-      console.log(value);
-      return el.description.toLowerCase().includes(value.toLowerCase()) ||
-              el.title.toLowerCase().includes(value.toLowerCase())
-    })
-    console.log(filtered_posts);
+
+    let filtered_posts = [];
+    if(searchInput !== ""){
+      filtered_posts = allData.filter((el)=>{
+        console.log(searchInput);
+        return el.link.toLowerCase().includes(searchInput.toLowerCase()) ||
+                el.name.toLowerCase().includes(searchInput.toLowerCase())
+      })
+    }else{
+      filtered_posts = allData;
+      console.log("all");
+      console.log(allData);
+    }
+
     setAllPosts(filtered_posts)
   }
 
   const inputValueOnChange = (event)=>{
-    setValue(event.target.value);
+    setSearchInput(event.target.value);
   }
 
   
@@ -150,7 +163,7 @@ const PostList = ({ }) => {
     <div>
        <div className={`ui search ${styles['search-bar']}`}>
         <div className="ui icon input">
-          <input value={value} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
+          <input value={searchInput} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
           <i className="search link icon" onClick={searchNews}></i>
         </div>
       </div>
