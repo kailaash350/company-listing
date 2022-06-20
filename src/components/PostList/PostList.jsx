@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from '../Card';
 import styles from './PostList.module.css';
+import { SearchContext } from "../../hooks/Context";
 
 
 // const GET_NEWS = gql`
@@ -69,11 +70,15 @@ const PostList = () => {
   const [end, setEnd] = useState(4);
   const [posts, setPosts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-  const [value, setValue] = useState("");
+  const { searchInput, setSearchInput } = useContext(SearchContext);
 
   useEffect(()=>{
     if (!loading){
-      setAllPosts(all_data)
+      if(searchInput !== ""){
+        searchNews()
+      }else{
+        setAllPosts(all_data)
+      }
     }
 
   }, [loading])
@@ -107,17 +112,22 @@ const PostList = () => {
   )
 
   const searchNews = ()=>{
-    const filtered_posts = all_data.filter((el)=>{
-      console.log(value);
-      return el.description.toLowerCase().includes(value.toLowerCase()) ||
-              el.title.toLowerCase().includes(value.toLowerCase())
-    })
+    let filtered_posts = [];
+    if(searchInput !== ""){
+      filtered_posts = all_data.filter((el)=>{
+        console.log(searchInput);
+        return el.description.toLowerCase().includes(searchInput.toLowerCase()) ||
+                el.title.toLowerCase().includes(searchInput.toLowerCase())
+      })
+    }else{
+      filtered_posts = all_data;
+    }
     console.log(filtered_posts);
     setAllPosts(filtered_posts)
   }
 
   const inputValueOnChange = (event)=>{
-    setValue(event.target.value);
+    setSearchInput(event.target.value);
   }
 
   
@@ -127,7 +137,7 @@ const PostList = () => {
     <div>
        <div className={`ui search ${styles['search-bar']}`}>
         <div className="ui icon input">
-          <input value={value} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
+          <input value={searchInput} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
           <i className="search link icon" onClick={searchNews}></i>
         </div>
       </div>
