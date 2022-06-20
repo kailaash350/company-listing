@@ -5,16 +5,10 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
-        },
-        "getAllRSSFeed": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
         }
     },
     "api": {
-        "companyListingAPI": {
+        "restendpoint": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

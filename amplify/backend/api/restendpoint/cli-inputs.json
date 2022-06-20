@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/getCompany": {
+      "name": "/getCompany",
+      "lambdaFunction": "companyListingLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

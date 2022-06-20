@@ -8,8 +8,8 @@ import { SearchContext } from "../../hooks/Context";
 
 // Amplify.configure(awsExports);
 
-const myAPI = "companyListingAPI";
-const path = "/company";
+const myAPI = "restendpoint";
+const path = "/getCompany";
 const RSS = "companyListingAPI";
 const RSSPath = "/get-all-rss-feed";
 export default function Home() {
