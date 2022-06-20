@@ -23,7 +23,7 @@
         },
         "getAllRSSFeed": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/getAllRSSFeed-58654259322f524c6d30-build.zip"
+          "s3Key": "amplify-builds/getAllRSSFeed-633543624a7372726932-build.zip"
         }
       }
     }
