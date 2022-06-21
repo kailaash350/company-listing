@@ -60,8 +60,8 @@ const dummy_data =   {
   }
 
 const PostList = ({ }) => {
-  const myAPI = "companyListingAPI";
-  const path = "/get-all-rss-feed";
+  const myAPI = "rssfeed";
+const path = "/getrssfeed";
 
 
   const [allData, setAllData] = useState([]);

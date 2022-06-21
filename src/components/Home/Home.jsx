@@ -10,8 +10,7 @@ import { SearchContext } from "../../hooks/Context";
 
 const myAPI = "restendpoint";
 const path = "/getCompany";
-const RSS = "companyListingAPI";
-const RSSPath = "/get-all-rss-feed";
+
 export default function Home() {
     const [company, setCompany] = useState([]);
     const [searchText, setSearchText] = useState()

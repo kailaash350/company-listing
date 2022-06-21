@@ -20,6 +20,10 @@
         "searchCompany": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
           "s3Key": "amplify-builds/searchCompany-6a516c4f716c75676d4f-build.zip"
+        },
+        "getRssFeed": {
+          "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
+          "s3Key": "amplify-builds/getRssFeed-54793772366557556b2f-build.zip"
         }
       }
     }
