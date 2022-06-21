@@ -28,6 +28,9 @@ h1{
   margin: 0 auto 1.5rem;
   padding: 3rem;
   text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 5px #00000099;
+
 }
 
 .form input {
@@ -62,6 +65,20 @@ h1{
   outline: 0;
   background: #4b6cb7;
   width: 100%;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.page-section .update{
+  text-transform: uppercase;
+  outline: 0;
+  background: #4b6cb7;
+  width: 10%;
   border: 0;
   border-radius: 5px;
   padding: 15px;

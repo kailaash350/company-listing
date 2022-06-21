@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/search": {
+      "name": "/search",
+      "lambdaFunction": "companySearch",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

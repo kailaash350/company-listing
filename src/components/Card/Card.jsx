@@ -24,7 +24,7 @@ const Card = ({ data }) => {
                     </a>
                     {/* <span className='time'>{data.desc}</span> */}
                     <span className={`right floated category ${styles.date}`}>
-                        {data.pubDate}
+                        {data.date}
                     </span>
                 </div>
             </div>
