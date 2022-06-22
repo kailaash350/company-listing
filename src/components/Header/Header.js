@@ -28,7 +28,7 @@ export const Header = ({ name, navs }) => {
             height='50'
             className={styles.img}
           />
-          <h1 className={styles.h1}>{name}</h1>
+          <h1 className={styles.h1}>Project Name</h1>
         </div>
         </Link>
         <div>
