@@ -8,26 +8,9 @@ import { SearchContext } from "../../hooks/Context";
 
 Amplify.configure(awsExports);
 
-// const GET_NEWS = gql`
-//   query MyQuery {
-//     listNews {
-//       nextToken
-//       items {
-//         description
-//         id
-//         link
-//         pubDate
-//         createdAt
-//         title
-//         updatedAt
-//       }
-//     }
-//   }`
-
-
 const PostList = ({ }) => {
   const myAPI = "rssfeed";
-const path = "/getrssfeed";
+  const path = "/getrssfeed";
 
 
   const [allData, setAllData] = useState([]);
@@ -46,6 +29,13 @@ const path = "/getrssfeed";
     handleGetRSSData()
    },[]);
    
+  function onEnterPress(e) {
+    if(e.code == 'Enter'){
+      console.log("Pressing Enter key...");
+      setSearchInput(e.target.value)
+      searchNews()
+    }
+  }
    
   function handleGetRSSData() {
       API.get(myAPI, path)
@@ -109,11 +99,8 @@ const path = "/getrssfeed";
                 el.articleFullText.toLowerCase().includes(searchInput.toLowerCase())
       })
     }else{
-      filtered_posts = allData;
-      console.log("all");
-      console.log(allData);
+      filtered_posts = allData.map(el => el);
     }
-    console.log(filtered_posts.length);
     setAllPosts(filtered_posts)
   }
 
@@ -128,14 +115,15 @@ const path = "/getrssfeed";
     <div>
        <div className={`ui search ${styles['search-bar']}`}>
         <div className="ui icon input">
-          <form onSubmit={searchNews}>
+
           <input value={searchInput}
            className="prompt" type="text"
            placeholder="Search..." 
            onChange={inputValueOnChange}
+           onKeyDown={onEnterPress}
+           id="search-bar"
            />
-          <button type='submit'><i className="search link icon"  onClick={searchNews}></i></button>
-          </form>
+          <i className="search link icon"  onClick={searchNews}></i>
         </div>
       </div>
        <InfiniteScroll
