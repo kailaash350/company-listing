@@ -10,15 +10,33 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "getAllRSSFeed": {
+    "getRssFeed": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "service": "Lambda"
+    },
+    "companySearch": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
-    "companyListingAPI": {
+    "searchCompany": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "searchCompany",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "restendpoint": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
@@ -32,15 +50,7 @@
         },
         {
           "category": "function",
-          "resourceName": "getAllRSSFeed",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "searchCompany",
+          "resourceName": "companySearch",
           "attributes": [
             "Name",
             "Arn"
@@ -48,13 +58,13 @@
         }
       ]
     },
-    "searchCompany": {
+    "rssfeed": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "searchCompany",
+          "resourceName": "getRssFeed",
           "attributes": [
             "Name",
             "Arn"

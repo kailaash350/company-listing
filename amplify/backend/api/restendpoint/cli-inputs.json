@@ -1,16 +1,16 @@
 {
   "version": 1,
   "paths": {
-    "/company": {
-      "name": "/company",
+    "/getCompany": {
+      "name": "/getCompany",
       "lambdaFunction": "companyListingLambda",
       "permissions": {
         "setting": "open"
       }
     },
-    "/get-all-rss-feed": {
-      "name": "/get-all-rss-feed",
-      "lambdaFunction": "getAllRSSFeed",
+    "/search": {
+      "name": "/search",
+      "lambdaFunction": "companySearch",
       "permissions": {
         "setting": "open"
       }

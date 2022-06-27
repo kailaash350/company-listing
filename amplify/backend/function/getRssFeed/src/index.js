@@ -1,7 +1,4 @@
-/* Amplify Params - DO NOT EDIT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT */
+
 
 const AWS = require('aws-sdk')
 /**
