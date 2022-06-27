@@ -24,40 +24,6 @@ Amplify.configure(awsExports);
 //     }
 //   }`
 
-const dummy_data =   {
-      "listNews": {
-          "nextToken": null,
-          "items": [
-              {
-                  "description": "Two-year project puts system on AWS.",
-                  "id": "8a1fa975-5124-401e-bcb7-104cd31089af",
-                  "link": "https://www.itnews.com.au/news/macquarie-moves-sap-core-banking-to-cloud-580341?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+Cloud+feed",
-                  "pubDate": "Mon, 23 May 2022 11:57:00 +1000",
-                  "createdAt": "2022-06-08T06:10:36.970Z",
-                  "title": "Macquarie moves SAP core banking to cloud",
-                  "updatedAt": "2022-06-08T06:10:36.970Z"
-              },
-              {
-                  "description": "Targets businesses with free API services. ",
-                  "id": "b634f086-b18c-4d15-9ce4-9543b36e072d",
-                  "link": "https://www.itnews.com.au/news/whatsapp-to-launch-cloud-based-tools-premium-features-580262?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+Cloud+feed",
-                  "pubDate": "Fri, 20 May 2022 12:00:00 +1000",
-                  "createdAt": "2022-06-08T06:10:37.217Z",
-                  "title": "WhatsApp to launch cloud-based tools, premium features",
-                  "updatedAt": "2022-06-08T06:10:37.217Z"
-              },
-              {
-                  "description": "Podcast: Under technology transformation.",
-                  "id": "6b793c6d-4e76-45c4-aed4-26697465f224",
-                  "link": "https://www.itnews.com.au/news/eclipx-group-drives-vehicle-leasing-into-the-cloud-580257?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+Cloud+feed",
-                  "pubDate": "Mon, 23 May 2022 06:30:00 +1000",
-                  "createdAt": "2022-06-08T06:10:37.091Z",
-                  "title": "Eclipx Group drives vehicle leasing into the cloud",
-                  "updatedAt": "2022-06-08T06:10:37.091Z"
-              }
-          ]
-      }
-  }
 
 const PostList = ({ }) => {
   const myAPI = "rssfeed";
@@ -66,8 +32,6 @@ const path = "/getrssfeed";
 
   const [allData, setAllData] = useState([]);
   
-  // const all_data = [...data.listNews.items, ...data.listNews.items, ...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items,...data.listNews.items]
-
 
   let loading = false;
 
@@ -120,7 +84,7 @@ const path = "/getrssfeed";
   }
   
   const increaseFilteredEnd = () => {
-    if (allPosts.length != 0 && end+n > allPosts.length){
+    if (allPosts.length !== 0 && end+n > allPosts.length){
       setEnd(allPosts.length);
       setHasMore(false)
     }else{
@@ -155,16 +119,22 @@ const path = "/getrssfeed";
   const inputValueOnChange = (event)=>{
     setSearchInput(event.target.value);
   }
-
   
+
   if(loading) return (<h1>Loading...</h1>)
 
   return (
     <div>
        <div className={`ui search ${styles['search-bar']}`}>
         <div className="ui icon input">
-          <input value={searchInput} className="prompt" type="text" placeholder="Search..." onChange={inputValueOnChange}/>
-          <i className="search link icon" onClick={searchNews}></i>
+          <form onSubmit={searchNews}>
+          <input value={searchInput}
+           className="prompt" type="text"
+           placeholder="Search..." 
+           onChange={inputValueOnChange}
+           />
+          <button type='submit'><i className="search link icon"  onClick={searchNews}></i></button>
+          </form>
         </div>
       </div>
        <InfiniteScroll

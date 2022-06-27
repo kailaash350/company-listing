@@ -11,7 +11,7 @@ export const FilterInput = ({filter, setFilter}) => {
   return (
    
       <span>
-
+        <label htmlFor="">Local Search : </label>
         <input className='table-search'
         placeholder='Local Search'
           value={value || ''}
