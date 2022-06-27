@@ -3,7 +3,7 @@
 
 .card-size{
   width: 350px !important;
-  min-height: 200px;
+  min-height: 250px !important;
   max-height: auto;
   padding: 10px !important;
   border-radius: 20px !important;

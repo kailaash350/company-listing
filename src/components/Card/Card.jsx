@@ -2,10 +2,31 @@ import React from "react";
 
 import styles from "./Card.module.css";
 
+const colorList = Object({
+    Software: "blue",
+    Networking: "pink",
+    "Digital & Disruption": "red",
+    Storage: "yellow",
+    Security: "olive",
+    Cloud: "teal",
+    "Telcom/ISP": "green",
+})
+
 const Card = ({ data }) => {
+
+    let color;
+    if(data.category in colorList){
+        color = colorList[data.category]
+    }else{
+        color = "brown"
+    }
     return (
-        <div className={`ui card blue ${styles['card-size']}`}>
+        <div className={`ui card blue ${styles["card-size"]}`}>
             <div className='content'>
+                <div className={`ui ${color} label ${styles["my-label"]}`}>
+                    {data.category}
+                </div>
+
                 <div className={styles["my-header"]}>{data.name}</div>
 
                 <div className={styles["my-desc"]}>
