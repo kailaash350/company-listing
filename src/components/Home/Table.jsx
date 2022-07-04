@@ -108,7 +108,7 @@ export default function Table(props){
             <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
             <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
             </div>
-            <div className='page-section'>
+            {/* <div className='page-section'>
             <h3>For network call to fetch feed data</h3>
               <code>
                 {JSON.stringify(
@@ -119,7 +119,7 @@ export default function Table(props){
                 )
                 }
             </code> 
-</div>
+</div> */}
         </>
     )
 }

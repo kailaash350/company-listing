@@ -28,6 +28,14 @@
         "companySearch": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
           "s3Key": "amplify-builds/companySearch-414e436d5739506d7449-build.zip"
+        },
+        "searchByLocation": {
+          "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
+          "s3Key": "amplify-builds/searchByLocation-34794847686745416551-build.zip"
+        },
+        "rssFeedByCategory": {
+          "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
+          "s3Key": "amplify-builds/rssFeedByCategory-714f6c505a434e634f67-build.zip"
         }
       }
     }

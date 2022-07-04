@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/getByCategory": {
+      "name": "/getByCategory",
+      "lambdaFunction": "rssFeedByCategory",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

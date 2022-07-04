@@ -1,6 +1,11 @@
-import React from "react";
-
+import { ConsoleLogger } from "@aws-amplify/core";
+import React,{useState} from "react";
+import  { API } from "aws-amplify";
 import styles from "./Card.module.css";
+const myAPI = "rssfeed";
+const path = "/getByCategory"
+
+
 
 const colorList = Object({
     Software: "blue",
@@ -13,7 +18,26 @@ const colorList = Object({
 })
 
 const Card = ({ data }) => {
-
+    
+    // const [ctrData, setCtrData] = useState([]);
+    // api to seach rss feed by category - working fine - need to integrate to front
+    const getBycategory =(e)=> {
+        var category = e.target.textContent
+            const myInit = {
+                body: {
+                  category:category
+                }
+              };
+            API.post(myAPI, path, myInit)
+                .then((response) => {
+                    console.log(response.Items)
+                    // setCtrData = response.Items;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+    }
+    
     let color;
     if(data.category in colorList){
         color = colorList[data.category]
@@ -23,7 +47,7 @@ const Card = ({ data }) => {
     return (
         <div className={`ui card blue ${styles["card-size"]}`}>
             <div className='content'>
-                <div className={`ui ${color} label ${styles["my-label"]}`}>
+                <div onClick={getBycategory} className={`ui ${color} label ${styles["my-label"]}`}>
                     {data.category}
                 </div>
 

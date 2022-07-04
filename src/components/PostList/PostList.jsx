@@ -28,7 +28,8 @@ const PostList = ({ }) => {
   useEffect(() => {
     handleGetRSSData()
    },[]);
-   
+
+
   function onEnterPress(e) {
     if(e.code == 'Enter'){
       console.log("Pressing Enter key...");
@@ -40,7 +41,6 @@ const PostList = ({ }) => {
   function handleGetRSSData() {
       API.get(myAPI, path)
           .then((response) => {
-            // console.log(response);
               setAllData(response.Items);
           })
           .catch((error) => {
@@ -70,7 +70,7 @@ const PostList = ({ }) => {
     setTimeout(() => {
       setPosts(allPosts.slice(0, end))
       increaseFilteredEnd()
-    }, (1500));
+    }, (500));
   }
   
   const increaseFilteredEnd = () => {
