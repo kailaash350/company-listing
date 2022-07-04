@@ -17,7 +17,7 @@ const colorList = Object({
     "Telcom/ISP": "green",
 })
 
-const Card = ({ data }) => {
+const Card = ({ data, setAllPosts }) => {
     
     // const [ctrData, setCtrData] = useState([]);
     // api to seach rss feed by category - working fine - need to integrate to front
@@ -32,6 +32,7 @@ const Card = ({ data }) => {
                 .then((response) => {
                     console.log(response.Items)
                     // setCtrData = response.Items;
+                    setAllPosts(response.Items)
                 })
                 .catch((error) => {
                     console.log(error);

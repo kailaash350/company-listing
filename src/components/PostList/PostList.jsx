@@ -136,7 +136,7 @@ const PostList = ({ }) => {
           <div className={styles.cards}>
           {
             posts.map((data, index)=>{
-              return <Card key={index.toString()} data={data}/>
+              return <Card key={index.toString()} data={data} setAllPosts={setAllPosts}/>
             })
           }
           </div>
