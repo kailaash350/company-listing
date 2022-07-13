@@ -117,7 +117,7 @@ const PostList = ({ }) => {
         <div className="ui icon input">
 
           <input value={searchInput}
-           className="prompt" type="text"
+           className={`prompt`} type="text"
            placeholder="Search..." 
            onChange={inputValueOnChange}
            onKeyDown={onEnterPress}

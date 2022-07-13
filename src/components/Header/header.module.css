@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1000px;
+  max-width: 1000px;
   margin: auto;
 }
 
