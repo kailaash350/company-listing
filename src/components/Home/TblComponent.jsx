@@ -4,7 +4,8 @@ import { useSortBy } from 'react-table/dist/react-table.development';
 import { Checkbox } from './Checkbox.jsx';
 import { FilterInput } from './FilterInput';
 
-export default function Table(props){
+
+export default function TblComponent(props){
     const columns = props.columns
     const data =  props.data
 
@@ -57,6 +58,7 @@ export default function Table(props){
             <FilterInput  filter={globalFilter} setFilter={setGlobalFilter} />
             
             <table {...getTableProps()}>
+                
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -65,15 +67,18 @@ export default function Table(props){
                                     <span style={{ marginLeft: '1rem' }}>
                                         {column.isSorted
                                             ? column.isSortedDesc
-                                                ? 'v'
-                                                : '^'
+                                                ? '↓'
+                                                : '↑'
                                             : ''}
+                                            
                                     </span>
                                 </th>
                             ))}
                         </tr>
                     ))}
                 </thead>
+                
+               
                 <tbody {...getTableBodyProps()}>
                     {page.map(row => {
                         prepareRow(row)

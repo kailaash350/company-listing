@@ -1,26 +1,13 @@
 .App {
   text-align: center;
+  height: auto;
 }
 
-body {
-  /* background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); */
-}
+
 h1{
-  color: #3d3d3d;
+  color: #ffffff;
   text-align: center;
 }
-.form-container{
-  width: 400px;
-  padding: 8% 0 0;
-  margin: auto;
-  font-family: 'Times New Roman', Times, serif
-}
-.search {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-
 .form {
   position: relative;
   z-index: 1;

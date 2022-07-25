@@ -2,7 +2,7 @@ import React, { useState, useContext,useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import  { API } from "aws-amplify";
-import Table from "./Table";
+import TblComponent from "./TblComponent";
 import { SearchContext } from "../../hooks/Context";
 
 // import awsExports from "../../aws-exports";
@@ -25,7 +25,11 @@ useEffect(() => {
     if(focusButton.current) focusButton.current.focus();
 }, [focusButton])
 
-
+function onEnterPress(e) {
+    if(e.code == 'Enter'){
+      deciderFunction(e)
+    }
+  }
 
     function searchData(){
         const myInit = {
@@ -67,9 +71,12 @@ useEffect(() => {
 
 const getDiv = (e)=>{
     setshow(false)
+    console.log(e.target.textContent)
    setSearchText(e.target.textContent);
+   searchData();
 }
 
+// local search
  function searchFeed(e){
     setSearchInput('')
      setshow(true)
@@ -95,13 +102,14 @@ const getDiv = (e)=>{
                             onChange={searchFeed}
                             type='text'
                             placeholder="Search by Company Name"
+                            onKeyDown={onEnterPress}
                         >
                         </input>                           
 
                         {show === false?'':
                         <div className="auto-div-container">
                         {searchList.map((i) =>(
-                                <div className="auto-div" value={i} onClick={((e) => getDiv(e, i))}>{i}</div>
+                                <div className="auto-div" key={i} value={i} onClick={((e) => getDiv(e, i))}>{i}</div>
                         )
                         )
                         }
@@ -127,8 +135,8 @@ const getDiv = (e)=>{
             </div>
             <section className="page-section">
                 {company.length === 0 ?
-                    '':
-                    <Table data={company} columns={COLUMNS} />
+                    <h1>No records Avaliable</h1>:
+                    <TblComponent data={company} columns={COLUMNS} />
                 }
             </section>
             {company.length === 0 ?
@@ -170,12 +178,13 @@ const COLUMNS = [{
     Header: 'ASX',
     accessor: 'ASX'
 }, {
-    Header: 'Revenue(mil)',
-    accessor: 'revenue(mil)'
-}, {
-    Header: 'Budget(mil)',
-    accessor: 'budget(mil)'
+    Header: 'Revenue $AUD (Mil)',
+    accessor: 'revenue'
 }
+// }, {
+//     Header: 'Budget(mil)',
+//     accessor: 'budget(mil)'
+// }
 ]
 
 
