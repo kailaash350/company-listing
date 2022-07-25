@@ -15,27 +15,31 @@
       "function": {
         "companyListingLambda": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/companyListingLambda-4575475a57436e4f7a6a-build.zip"
+          "s3Key": "amplify-builds/companyListingLambda-3875775257515a335936-build.zip"
         },
         "searchCompany": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/searchCompany-6a516c4f716c75676d4f-build.zip"
+          "s3Key": "amplify-builds/searchCompany-53716458467977716268-build.zip"
         },
         "getRssFeed": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/getRssFeed-54793772366557556b2f-build.zip"
+          "s3Key": "amplify-builds/getRssFeed-34466d376a706347786d-build.zip"
         },
         "companySearch": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/companySearch-414e436d5739506d7449-build.zip"
+          "s3Key": "amplify-builds/companySearch-4a547a66344633527552-build.zip"
         },
         "searchByLocation": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/searchByLocation-34794847686745416551-build.zip"
+          "s3Key": "amplify-builds/searchByLocation-3743576c7a6656326f37-build.zip"
         },
         "rssFeedByCategory": {
           "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
-          "s3Key": "amplify-builds/rssFeedByCategory-714f6c505a434e634f67-build.zip"
+          "s3Key": "amplify-builds/rssFeedByCategory-65505a4e614130744748-build.zip"
+        },
+        "searchCompanyByIndustry": {
+          "deploymentBucketName": "amplify-companylisting-dev-82702-deployment",
+          "s3Key": "amplify-builds/searchCompanyByIndustry-5375736a754646457262-build.zip"
         }
       }
     }
