@@ -9,7 +9,7 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 
 
-export default function MyTable(props){
+export default function TblComponent(props){
     const columns = props.columns
     const data =  props.data
 

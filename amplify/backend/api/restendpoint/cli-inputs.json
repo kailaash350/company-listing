@@ -21,6 +21,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/getCmpByIndustry": {
+      "name": "/getCmpByIndustry",
+      "lambdaFunction": "searchCompanyByIndustry",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

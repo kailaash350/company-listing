@@ -29,6 +29,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "searchCompanyByIndustry": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -69,6 +74,14 @@
         {
           "category": "function",
           "resourceName": "searchByLocation",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "searchCompanyByIndustry",
           "attributes": [
             "Name",
             "Arn"

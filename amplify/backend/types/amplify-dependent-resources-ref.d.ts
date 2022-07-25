@@ -6,13 +6,13 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "searchCompany": {
+        "getRssFeed": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "getRssFeed": {
+        "searchCompany": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -31,6 +31,12 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string"
         },
         "rssFeedByCategory": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "searchCompanyByIndustry": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
