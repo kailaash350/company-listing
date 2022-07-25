@@ -73,8 +73,8 @@ export default function TblComponent(props){
                                 <span style={{ marginLeft: '1rem' }}>
                                     {column.isSorted
                                         ? column.isSortedDesc
-                                            ? 'v'
-                                            : '^'
+                                            ? '↓'
+                                            : '↑'
                                         : ''}
                                 </span>
                             </Th>

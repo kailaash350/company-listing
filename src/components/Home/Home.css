@@ -36,6 +36,8 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  box-shadow: 0 1px 5px #00000099;
+
 }
 .form select {
   outline: 0;
@@ -47,6 +49,9 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  color: rgb(122, 121, 121);
+  box-shadow: 0 1px 5px #00000099;
+
 }
 
 .form input:focus {
@@ -71,6 +76,8 @@
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  box-shadow: 0 3px 5px #0447e599;
+
 }
 .page-section .update{
   text-transform: uppercase;
