@@ -2,8 +2,10 @@ import React, { useState, useContext,useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import  { API } from "aws-amplify";
-import Table from "./Table";
+import MyTable from "./Table";
 import { SearchContext } from "../../hooks/Context";
+
+
 
 // import awsExports from "../../aws-exports";
 // Amplify.configure(awsExports);,
@@ -128,14 +130,14 @@ const getDiv = (e)=>{
             <section className="page-section">
                 {company.length === 0 ?
                     '':
-                    <Table data={company} columns={COLUMNS} />
+                    <MyTable data={company} columns={COLUMNS} />
                 }
             </section>
             {company.length === 0 ?
                 '' :
                 <section className="page-section">
                     <Link to='/feeds'>
-                        <button  className="update">Detailed News Feed</button>
+                        <button className="ui primary button ">Detailed News Feed</button>
                     </Link>
                 </section>
             }
