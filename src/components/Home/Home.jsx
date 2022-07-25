@@ -168,25 +168,23 @@ const COLUMNS = [{
 }, {
     Header: 'Head Quaters',
     accessor: 'head_quaters'
-}, {
-    Header: 'Founded',
-    accessor: 'founded'
-}, {
-    Header: 'Details',
-    accessor: 'details'
-}, {
+},  {
     Header: 'ASX',
     accessor: 'ASX'
 }, {
     Header: 'Revenue $AUD (Mil)',
     accessor: 'revenue'
+}, {
+    Header: 'Budget $AUD (Mil)',
+    accessor: 'budget'
+},{
+    Header: 'Founded',
+    accessor: 'founded'
+}, {
+    Header: 'Details',
+    accessor: 'details'
 }
-// }, {
-//     Header: 'Budget(mil)',
-//     accessor: 'budget(mil)'
-// }
+
 ]
-
-
 
 export default Home;

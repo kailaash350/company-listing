@@ -140,10 +140,10 @@ th{
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #e9e9e9;
 }
 tr:nth-child(odd) {
-  background-color: #c0c0c0;
+  background-color: #e1e1e1;
 }
 .table-search{
   outline: 0;
