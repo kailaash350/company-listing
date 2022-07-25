@@ -4,6 +4,10 @@ import { useSortBy } from 'react-table/dist/react-table.development';
 import { Checkbox } from './Checkbox.jsx';
 import { FilterInput } from './FilterInput';
 
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+
+
 
 export default function TblComponent(props){
     const columns = props.columns
@@ -50,6 +54,9 @@ export default function TblComponent(props){
     }
     )
 
+    const headerGroup = headerGroups.at(0);
+    console.log(headerGroups);
+
     const { globalFilter, pageIndex, pageSize} = state
 
     return (
@@ -57,41 +64,36 @@ export default function TblComponent(props){
             
             <FilterInput  filter={globalFilter} setFilter={setGlobalFilter} />
             
-            <table {...getTableProps()}>
-                
-                <thead>
-                    {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps)}>{column.render('Header')}
-                                    <span style={{ marginLeft: '1rem' }}>
-                                        {column.isSorted
-                                            ? column.isSortedDesc
-                                                ? '↓'
-                                                : '↑'
-                                            : ''}
-                                            
-                                    </span>
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                
-               
-                <tbody {...getTableBodyProps()}>
+            <Table {...getTableProps()}>
+                <Thead>
+                    <Tr {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers.map(column => (
+                            <Th {...column.getHeaderProps(column.getSortByToggleProps)}>
+                                {column.render('Header')}
+                                <span style={{ marginLeft: '1rem' }}>
+                                    {column.isSorted
+                                        ? column.isSortedDesc
+                                            ? 'v'
+                                            : '^'
+                                        : ''}
+                                </span>
+                            </Th>
+                        ))}
+                    </Tr>
+               </Thead>
+                <Tbody {...getTableBodyProps()}>
                     {page.map(row => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()}>
+                            <Tr {...row.getRowProps()} style={{padding: "10px 0"}}>
                                 {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    return <Td {...cell.getCellProps()}>{cell.render('Cell')}</Td>
                                 })}
-                            </tr>
+                            </Tr>
                         )
                     })}
-                </tbody>
-            </table>
+                </Tbody>
+            </Table>
             <div className="page-section">
                 
             <span>

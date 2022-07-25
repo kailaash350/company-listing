@@ -5,6 +5,8 @@ import  { API } from "aws-amplify";
 import TblComponent from "./TblComponent";
 import { SearchContext } from "../../hooks/Context";
 
+
+
 // import awsExports from "../../aws-exports";
 // Amplify.configure(awsExports);,
 
@@ -143,7 +145,7 @@ const getDiv = (e)=>{
                 '' :
                 <section className="page-section">
                     <Link to='/feeds'>
-                        <button  className="update">Detailed News Feed</button>
+                        <button className="ui primary button ">Detailed News Feed</button>
                     </Link>
                 </section>
             }
