@@ -133,6 +133,7 @@ const PostList = ({ }) => {
           loader={LoadMoreButton}
           className={styles.scroll}
         >
+        <div className='ui label'>About {posts.length} results</div>
           <div className={styles.cards}>
           {
             posts.map((data, index)=>{
