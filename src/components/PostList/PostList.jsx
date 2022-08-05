@@ -108,6 +108,24 @@ const PostList = ({ }) => {
     setSearchInput(event.target.value);
   }
   
+  const getBycategory =(e)=> {
+    var category = e.target.textContent
+    console.log(category);
+        // const myInit = {
+        //     body: {
+        //       category:category
+        //     }
+        //   };
+        // API.post(myAPI, "/getByCategory", myInit)
+        //     .then((response) => {
+        //         console.log(response.Items)
+        //         // setCtrData = response.Items;
+        //         setAllPosts(response.Items)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+}
 
   if(loading) return (<h1>Loading...</h1>)
 
@@ -125,6 +143,11 @@ const PostList = ({ }) => {
            />
           <i className="search link icon"  onClick={searchNews}></i>
         </div>
+        <div className={`${styles.filter}`}>
+          {FILTER_OPTION.map((option) => {
+            return <a className={`ui label`} key={option} value={option} onClick={getBycategory}> {option}</a>
+          })}
+        </div>
       </div>
        <InfiniteScroll
           dataLength={posts.length}
@@ -133,7 +156,7 @@ const PostList = ({ }) => {
           loader={LoadMoreButton}
           className={styles.scroll}
         >
-        <div className='ui label'>About {posts.length} results</div>
+          <div className='ui label'>About {posts.length} results</div>
           <div className={styles.cards}>
           {
             posts.map((data, index)=>{
@@ -147,5 +170,7 @@ const PostList = ({ }) => {
     </div>
   )
 }
+
+const FILTER_OPTION = [ "ALL", "Software", "Networking", "Digital & Disruption", "Storage", "Security", "Cloud", "Telcom/ISP"]
 
 export default PostList;

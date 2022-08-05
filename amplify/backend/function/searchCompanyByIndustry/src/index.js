@@ -8,16 +8,15 @@ const AWS = require('aws-sdk');
  AWS.config.update({ region: process.env.TABLE_REGION });
  const dynamodbCLI = new AWS.DynamoDB.DocumentClient();
  exports.handler = async (event) => {
-    //  var json = JSON.parse(event.body)
-     console.log(event)
-    // const catr = json.category
+     var json = JSON.parse(event.body)
+    const ind = json.industry
 try {
           const params = {
             TableName: 'aus_companies',
             IndexName : 'industry-index',
             KeyConditionExpression: 'industry = :ind',
             ExpressionAttributeValues:{
-                ':ind':"Basic materials"
+                ':ind':ind
             }
 }
 
