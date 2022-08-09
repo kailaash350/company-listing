@@ -1,5 +1,4 @@
-# Getting Started with Amplify APP
-
+# App is hosted at https://master.dxdzxngu8yi9g.amplifyapp.com/
 
 ## Available Scripts
 
