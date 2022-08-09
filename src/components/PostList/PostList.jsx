@@ -110,21 +110,25 @@ const PostList = ({ }) => {
   
   const getBycategory =(e)=> {
     var category = e.target.textContent
-    console.log(category);
-        // const myInit = {
-        //     body: {
-        //       category:category
-        //     }
-        //   };
-        // API.post(myAPI, "/getByCategory", myInit)
-        //     .then((response) => {
-        //         console.log(response.Items)
-        //         // setCtrData = response.Items;
-        //         setAllPosts(response.Items)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+    if(category === "ALL"){
+      handleGetRSSData()
+    }else{
+
+      const myInit = {
+        body: {
+          category:category
+        }
+      };
+    API.post(myAPI, "/getByCategory", myInit)
+        .then((response) => {
+            console.log(response.Items)
+            setAllPosts(response.Items)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+   
 }
 
   if(loading) return (<h1>Loading...</h1>)
@@ -145,7 +149,7 @@ const PostList = ({ }) => {
         </div>
         <div className={`${styles.filter}`}>
           {FILTER_OPTION.map((option) => {
-            return <a className={`ui label`} key={option} value={option} onClick={getBycategory}> {option}</a>
+            return <a className={`ui label`} key={option} value={option} onClick={getBycategory}>{option}</a>
           })}
         </div>
       </div>
